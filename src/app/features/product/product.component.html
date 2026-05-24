@@ -1,0 +1,141 @@
+<div class="product-page">
+
+    <div class="top-bar">
+
+        <div>
+            <h1>Products</h1>
+            <p>Manage your products dashboard</p>
+        </div>
+
+        <div class="top-actions">
+
+            <input type="text" placeholder="Search product..." [(ngModel)]="searchText" (input)="searchProduct()">
+
+            <button class="add-btn" (click)="openAddModal()">
+
+                + Add Product
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- DATA FOUND -->
+
+    <div *ngIf="paginatedProducts.length > 0; else noData">
+
+        <div class="product-grid">
+
+            <div class="product-card" *ngFor="let product of paginatedProducts">
+
+                <div class="card-top"></div>
+
+                <h2>{{product.name}}</h2>
+
+                <h3>₹ {{product.price}}</h3>
+
+                <p>{{product.description}}</p>
+
+                <div class="card-actions">
+
+                    <button class="edit-btn" (click)="editProduct(product)">
+
+                        Edit
+
+                    </button>
+
+                    <button class="delete-btn" (click)="deleteProduct(product.id)">
+
+                        Delete
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="pagination">
+
+            <button (click)="prevPage()" [disabled]="currentPage === 1">
+
+                Prev
+
+            </button>
+
+            <span>
+
+                {{currentPage}} / {{totalPages}}
+
+            </span>
+
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+
+                Next
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- NO DATA -->
+
+    <ng-template #noData>
+
+        <div class="no-data">
+
+            <h2>No Data Found</h2>
+
+            <p>No products available.</p>
+
+        </div>
+
+    </ng-template>
+
+</div>
+
+<!-- MODAL -->
+
+<div class="modal-overlay" *ngIf="showModal">
+
+    <div class="modal">
+
+        <h2>
+
+            {{isEditMode ? 'Edit Product' : 'Add Product'}}
+
+        </h2>
+
+        <form [formGroup]="productForm">
+
+            <input type="text" placeholder="Product Name" formControlName="name">
+
+            <input type="number" placeholder="Price" formControlName="price">
+
+            <textarea rows="4" placeholder="Description" formControlName="description">
+            </textarea>
+
+        </form>
+
+        <div class="modal-actions">
+
+            <button class="cancel-btn" (click)="closeModal()">
+
+                Cancel
+
+            </button>
+
+            <button class="save-btn" (click)="saveProduct()">
+
+                Save
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>

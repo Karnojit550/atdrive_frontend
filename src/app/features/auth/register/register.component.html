@@ -1,0 +1,106 @@
+<div class="register-wrapper">
+    <div class="register-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-box">A</div>
+            <h1>AtDrive</h1>
+            <p>Create Your Account</p>
+        </div>
+
+        <!-- Form Section -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+            <h2>Sign Up</h2>
+            <p class="subtitle">Join us and start managing your enterprise</p>
+
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="error-message">
+                <span>{{ errorMessage }}</span>
+            </div>
+
+            <!-- Username Field -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" class="form-input" placeholder="Choose a username"
+                    formControlName="username"
+                    [class.error]="registerForm.get('username')?.invalid && registerForm.get('username')?.touched" />
+                <span *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched"
+                    class="error-text">
+                    <span *ngIf="registerForm.get('username')?.errors?.['required']">Username is required</span>
+                    <span *ngIf="registerForm.get('username')?.errors?.['minlength']">Username must be at least 3
+                        characters</span>
+                </span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-input-wrapper">
+                    <input id="password" [type]="showPassword ? 'text' : 'password'" class="form-input"
+                        placeholder="Create a strong password" formControlName="password"
+                        [class.error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" />
+                    <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" tabindex="-1">
+                        <span class="toggle-icon">{{ showPassword ? '👁️' : '👁️‍🗨️' }}</span>
+                    </button>
+                </div>
+                <div class="error-text"
+                    *ngIf="registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.touched">
+
+                    <div class="error-title">
+
+                        Password must contain:
+
+                    </div>
+
+                    <ul class="error-list">
+
+                        <li>At least 6 characters</li>
+                        <li>1 uppercase letter</li>
+                        <li>1 lowercase letter</li>
+                        <li>1 special character</li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="password-input-wrapper">
+                    <input id="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'" class="form-input"
+                        placeholder="Confirm your password" formControlName="confirmPassword"
+                        [class.error]="(registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched) || passwordMismatch" />
+                    <button type="button" class="toggle-password" (click)="toggleConfirmPasswordVisibility()"
+                        tabindex="-1">
+                        <span class="toggle-icon">{{ showConfirmPassword ?'👁️': '👁️‍🗨️' }}</span>
+                    </button>
+                </div>
+                <span
+                    *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched"
+                    class="error-text">
+                    Confirm password is required
+                </span>
+                <span *ngIf="passwordMismatch" class="error-text">
+                    Passwords do not match
+                </span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button" [disabled]="registerForm.invalid || isLoading">
+                <span *ngIf="!isLoading">Create Account</span>
+                <span *ngIf="isLoading" class="loading-spinner">Creating account...</span>
+            </button>
+
+            <!-- Login Link -->
+            <div class="auth-link">
+                <span>Already have an account?</span>
+                <button type="button" class="link-button" (click)="navigateToLogin()">
+                    Sign in
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="background-decoration"></div>
+</div>

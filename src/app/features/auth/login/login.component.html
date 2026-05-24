@@ -1,0 +1,81 @@
+<div class="login-wrapper">
+    <div class="login-container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo-box">A</div>
+            <h1>AtDrive</h1>
+            <p>Enterprise App Management</p>
+        </div>
+
+        <!-- Form Section -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+            <h2>Sign In</h2>
+            <p class="subtitle">Welcome back! Please login to your account</p>
+
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="error-message">
+                <span>{{ errorMessage }}</span>
+            </div>
+
+            <!-- Username Field -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" class="form-input" placeholder="Enter your username"
+                    formControlName="username"
+                    [class.error]="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" />
+                <span *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+                    class="error-text">
+                    Username is required
+                </span>
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-input-wrapper">
+                    <input id="password" [type]="showPassword ? 'text' : 'password'" class="form-input"
+                        placeholder="Enter your password" formControlName="password"
+                        [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" />
+                    <button type="button" class="toggle-password" (click)="togglePasswordVisibility()" tabindex="-1">
+                        <span class="toggle-icon">{{ showPassword ?'👁️' :'👁️‍🗨️' }}</span>
+                    </button>
+                </div>
+                <div class="error-text" *ngIf="loginForm.get('password')?.errors?.['pattern'] && loginForm.get('password')?.touched">
+
+                    <div class="error-title">
+
+                        Password must contain:
+
+                    </div>
+
+                    <ul class="error-list">
+
+                        <li>At least 6 characters</li>
+                        <li>1 uppercase letter</li>
+                        <li>1 lowercase letter</li>
+                        <li>1 special character</li>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-button" [disabled]="loginForm.invalid || isLoading">
+                <span *ngIf="!isLoading">Sign In</span>
+                <span *ngIf="isLoading" class="loading-spinner">Signing in...</span>
+            </button>
+
+            <!-- Register Link -->
+            <div class="auth-link">
+                <span>Don't have an account?</span>
+                <button type="button" class="link-button" (click)="navigateToRegister()">
+                    Create one
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="background-decoration"></div>
+</div>

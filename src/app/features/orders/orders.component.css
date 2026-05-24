@@ -1,0 +1,382 @@
+.container {
+    padding: 24px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.create-btn {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.no-data {
+    text-align: center;
+    padding: 50px;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.card-body p {
+    margin: 12px 0;
+    color: #475569;
+}
+
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.active {
+    background: #16a34a;
+}
+
+.inactive {
+    background: #dc2626;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.edit-btn {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f59e0b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.delete-btn {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    background: #ef4444;
+    color: #fff;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.pagination button {
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: #2563eb;
+    color: white;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+}
+
+/* MODAL */
+
+.modal-overlay {
+
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, .55);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+}
+
+.modal {
+
+    width: 650px;
+    max-width: 95%;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 24px;
+}
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.close-btn {
+
+    border: none;
+
+    background: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+.form-group {
+
+    margin-bottom: 18px;
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    outline: none;
+}
+
+.product-list {
+
+    max-height: 220px;
+
+    overflow: auto;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    padding: 12px;
+}
+
+.product-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 10px 0;
+
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.product-item:last-child {
+
+    border-bottom: none;
+}
+
+.total-box {
+
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+
+    border-radius: 12px;
+
+    padding: 16px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    color: #1d4ed8;
+
+    margin: 20px 0;
+}
+
+.modal-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+}
+
+.save-btn {
+
+    border: none;
+
+    background: #16a34a;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.cancel-btn {
+
+    border: none;
+
+    background: #ef4444;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.custom-dropdown {
+    position: relative;
+}
+
+.dropdown-header {
+
+    border: 1px solid #ddd;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    background: white;
+
+}
+
+.dropdown-body {
+
+    position: absolute;
+
+    width: 100%;
+
+    background: white;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    margin-top: 5px;
+
+    max-height: 260px;
+
+    overflow: auto;
+
+    z-index: 1000;
+
+    padding: 10px;
+
+}
+
+.dropdown-body input[type="text"] {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+}
+
+.dropdown-item {
+
+    display: flex;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    cursor: pointer;
+
+}
+
+@media(max-width:768px) {
+
+    .header {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        align-items: flex-start;
+    }
+
+    .cards {
+
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+
+        flex-direction: column;
+    }
+
+    .modal {
+
+        width: 95%;
+    }
+
+}

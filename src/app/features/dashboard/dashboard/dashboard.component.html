@@ -1,0 +1,57 @@
+<div class="dashboard-wrapper">
+  <div class="dashboard-content" *ngIf="weatherData; else loading">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1>Dashboard</h1>
+      <p class="subtitle">Welcome back! Here's your weather information</p>
+    </div>
+
+    <!-- Weather Card -->
+    <div class="weather-card">
+      <div class="card-header">
+        <div class="location-info">
+          <h2>{{ weatherData.name }}</h2>
+          <span class="country">{{ weatherData.sys.country }}</span>
+        </div>
+        <img
+          class="weather-icon"
+          [src]="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@4x.png'"
+          alt="Weather"
+        />
+      </div>
+
+      <div class="temperature-section">
+        <h3 class="main-temp">{{ weatherData.main.temp  }}°C</h3>
+        <div class="weather-info">
+          <span class="badge">{{ weatherData.weather[0].main }}</span>
+          <p class="description">{{ weatherData.weather[0].description }}</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Feels Like</span>
+          <span class="stat-value">{{ weatherData.main.feels_like  }}°C</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Humidity</span>
+          <span class="stat-value">{{ weatherData.main.humidity }}%</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Wind Speed</span>
+          <span class="stat-value">{{ weatherData.wind.speed }} m/s</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Pressure</span>
+          <span class="stat-value">{{ weatherData.main.pressure }} hPa</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <div class="loading-state">
+      <p>Loading weather data...</p>
+    </div>
+  </ng-template>
+</div>

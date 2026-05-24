@@ -1,0 +1,51 @@
+<div class="sidebar" [class.closed]="!(isOpen$ | async)">
+
+  <div class="logo">
+
+    <div class="logo-box">
+
+      A
+
+    </div>
+
+    <div>
+
+      <h2>AtDrive</h2>
+      <p>Enterprise App</p>
+
+    </div>
+
+  </div>
+
+  <div class="menu">
+
+    <a routerLink="/dashboard"
+       routerLinkActive="active-link">
+
+      <mat-icon>home</mat-icon>
+
+      Dashboard
+
+    </a>
+
+    <a routerLink="/products"
+       routerLinkActive="active-link">
+
+      <mat-icon>inventory_2</mat-icon>
+
+      Products
+
+    </a>
+
+    <a routerLink="/orders"
+       routerLinkActive="active-link">
+
+      <mat-icon>shopping_cart</mat-icon>
+
+      Orders
+
+    </a>
+
+  </div>
+
+</div>

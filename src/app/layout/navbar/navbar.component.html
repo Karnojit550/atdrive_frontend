@@ -1,0 +1,44 @@
+<mat-toolbar class="navbar">
+
+  <button mat-icon-button class="menu-btn" (click)="toggleSidebar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span class="spacer"></span>
+
+  <div class="navbar-actions">
+    <div class="profile-section" *ngIf="user">
+      <!-- Profile Avatar -->
+      <div class="profile-avatar" (click)="toggleProfileMenu()">
+        <div class="avatar-circle">{{ avatarLetter }}</div>
+      </div>
+
+      <!-- Profile Dropdown Menu -->
+      <div class="profile-menu" *ngIf="showProfileMenu">
+        <!-- Profile Card -->
+        <div class="profile-card">
+          <div class="profile-avatar-large">
+            <div class="avatar-circle-large">{{ avatarLetter }}</div>
+          </div>
+          <div class="profile-info">
+            <h3 class="profile-name">{{ user.name || user.username }}</h3>
+            <p class="profile-email">{{ user.email || 'No email' }}</p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="menu-divider"></div>
+
+        <!-- Logout Button -->
+        <button class="menu-item logout-item" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+
+      <!-- Overlay to close menu on click outside -->
+      <div class="profile-menu-overlay" *ngIf="showProfileMenu" (click)="closeProfileMenu()"></div>
+    </div>
+  </div>
+
+</mat-toolbar>
